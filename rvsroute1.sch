@@ -9,7 +9,7 @@ chkroute()
   if [ $? != 0 ]
   then
     echo "restart rvsroute$line"
-    ./rvsroute -a 1 -n $host -s $port -l /rvslog/$line &
+    /content/sc/rvsroute -a 1 -n $host -s $port -l /rvslog/$line &
     sleep 20
     x=1
     ps -eaf | grep "rvsroute -a"  | grep -v grep
@@ -19,7 +19,7 @@ chkroute()
     do
       echo "Retry restart $line $x after 5 second"
       sleep 20
-      ./rvsroute -a 1 -n $host -s $port -l /rvslog/$line &
+       /content/sc/rvsroute -a 1 -n $host -s $port -l /rvslog/$line &
       x=`expr $x + 1`
       ps -eaf | grep "rvsroute -a"  | grep -v grep
     done
